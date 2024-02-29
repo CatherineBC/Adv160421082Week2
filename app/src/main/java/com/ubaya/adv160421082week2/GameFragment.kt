@@ -7,10 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.ubaya.adv160421082week2.databinding.FragmentGameBinding
+import kotlin.random.Random
 
 class GameFragment : Fragment() {
-
     private lateinit var binding:FragmentGameBinding
+
+    private var number1: Int = 0
+    private var number2: Int = 0
+    private var score: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container:
     ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -20,10 +24,29 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnBack.setOnClickListener {
-            val action = GameFragmentDirections.actionMainFragment()
-            Navigation.findNavController(it).navigate(action)
+        number1 = Random.nextInt(1, 100)
+        number2 = Random.nextInt(1, 100)
+        binding.txtNum1.text = number1.toString()
+        binding.txtNum2.text = number2.toString()
+
+        binding.btnAnswer.setOnClickListener {
+            var jawaban = binding.txtJawaban.text.toString()
+            var correctAnswer = (number1 + number2).toString()
+            if (jawaban == correctAnswer) {
+                score += 1
+                number1 = Random.nextInt(1, 100)
+                number2 = Random.nextInt(1, 100)
+                binding.txtNum1.text = number1.toString()
+                binding.txtNum2.text = number2.toString()
+                binding.txtJawaban.text?.clear()
+
+            } else {
+                val action = GameFragmentDirections.actionResultFragment(score)
+                Navigation.findNavController(it).navigate(action)
+            }
+
         }
+
 
         if (arguments != null) {
             val playerName =

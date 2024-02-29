@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/actionMainFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/actionMainFragment"
         android:name="com.ubaya.adv160421082week2.MainFragment"
         android:label="fragment_main2"
         tools:layout="@layout/fragment_main2" >
@@ -21,13 +21,23 @@
         android:name="com.ubaya.adv160421082week2.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
-        <action
-            android:id="@+id/actionMainFragment"
-            app:destination="@id/mainFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
         <argument
             android:name="player_name"
             app:argType="string" />
+        <action
+            android:id="@+id/actionResultFragment"
+            app:destination="@id/actionResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/actionResultFragment"
+        android:name="com.ubaya.adv160421082week2.resultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/actionMainFragment"
+            app:destination="@id/actionMainFragment" />
+        <argument
+            android:name="score"
+            app:argType="integer" />
     </fragment>
 </navigation>
