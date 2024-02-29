@@ -9,5 +9,25 @@
         android:id="@+id/mainFragment"
         android:name="com.ubaya.adv160421082week2.MainFragment"
         android:label="fragment_main2"
-        tools:layout="@layout/fragment_main2" />
+        tools:layout="@layout/fragment_main2" >
+        <action
+            android:id="@+id/actionGameFragment"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.ubaya.adv160421082week2.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/actionMainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="player_name"
+            app:argType="string" />
+    </fragment>
 </navigation>
