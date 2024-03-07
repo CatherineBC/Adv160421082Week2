@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_navigation"
-    app:startDestination="@id/actionMainFragment">
+    app:startDestination="@id/itemHome">
 
     <fragment
-        android:id="@+id/actionMainFragment"
+        android:id="@+id/itemHome"
         android:name="com.ubaya.adv160421082week2.MainFragment"
         android:label="fragment_main2"
         tools:layout="@layout/fragment_main2" >
@@ -15,6 +15,9 @@
             app:destination="@id/gameFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/actionOptionFragment"
+            app:destination="@id/OptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -26,7 +29,8 @@
             app:argType="string" />
         <action
             android:id="@+id/actionResultFragment"
-            app:destination="@id/actionResultFragment" />
+            app:destination="@id/actionResultFragment"
+            app:popUpTo="@id/itemHome" />
     </fragment>
     <fragment
         android:id="@+id/actionResultFragment"
@@ -34,10 +38,26 @@
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
         <action
-            android:id="@+id/actionMainFragment"
-            app:destination="@id/actionMainFragment" />
+            android:id="@+id/itemHome"
+            app:destination="@id/itemHome"
+            app:popUpTo="@id/itemHome" />
         <argument
             android:name="score"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="com.ubaya.adv160421082week2.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.ubaya.adv160421082week2.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/OptionFragment"
+        android:name="com.ubaya.adv160421082week2.OptionFragment"
+        android:label="fragment_option"
+        tools:layout="@layout/fragment_option" />
 </navigation>

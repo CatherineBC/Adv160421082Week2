@@ -26,7 +26,7 @@ class resultFragment : Fragment() {
         }
 
         binding.btnBack.setOnClickListener(){
-            val action = resultFragmentDirections.actionMainFragment()
+            val action = resultFragmentDirections.itemHome()
             Navigation.findNavController(it).navigate(action)
         }
     }
